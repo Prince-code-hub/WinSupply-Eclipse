@@ -1,0 +1,37 @@
+{
+    "version": "1.0.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "BookishApplication",
+            "request": "launch",
+            "mainClass": "com.example.demo.BookishApplication",
+            "projectName": "demo-bookish"
+        },
+        {
+            "type": "java",
+            "name": "ApiNameApplication",
+            "request": "launch",
+            "mainClass": "com.example.demo.ApiNameApplication",
+            "projectName": "demo-bookish"
+        },
+        {
+            "type": "java",
+            "name": "bookish [H2]",
+            "request": "launch",
+            "mainClass": "com.winsupply.bookishservice.BookishServiceApplication",
+            "projectName": "bookish-service",
+            "noDebug": true,
+            "vmArgs": "-Dspring.profiles.active=h2"
+        },
+        {
+            "type": "java",
+            "name": "bookish [MariaDB]",
+            "request": "launch",
+            "mainClass": "com.winsupply.bookishservice.BookishServiceApplication",
+            "projectName": "bookish-service",
+            "noDebug": true,
+            "vmArgs": "-Dspring.profiles.active=mariadb"
+        }
+    ]
+}
