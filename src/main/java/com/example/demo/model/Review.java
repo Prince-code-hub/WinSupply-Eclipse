@@ -12,21 +12,21 @@ public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ReviewID", nullable = false)
-    private Integer reviewId;
+    Integer reviewId;
 
     @JoinColumn(name = "BookID", nullable = false)
     @ManyToOne
-    private Book book;
+    Book book;
 
     @Column(name = "Rating",  nullable = false)
-    private Byte rating;
+    Byte rating;
 
     @Column(name = "ReviewText", length = 3500,  nullable = false)
-    private String reviewText;
+    String reviewText;
 
     @Column(name = "IsRecommended")
-    private Boolean isRecommended;
+    Boolean isRecommended;
 
     @Column(name = "DatePosted",  nullable = false)
-    private LocalDateTime datePosted;
+    LocalDateTime datePosted;
 }
