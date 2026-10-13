@@ -12,21 +12,21 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "BookID", nullable = false)
-    private Integer bookId;
+    Integer bookId;
 
     @Column(name = "Title", length = 50, nullable = false)
-    private String title;
+    String title;
 
     @Column(name = "Author", length = 50, nullable = false)
-    private String author;
+    String author;
 
     @JoinColumn(name = "GenreID", nullable = false)
     @ManyToOne
-    private Genre genre;
+    Genre genre;
 
     @Column(name = "PageCount", nullable = false)
-    private Short pageCount;
+    Short pageCount;
 
     @Column(name = "DatePosted", nullable = false)
-    private LocalDate datePosted;
+    LocalDate datePosted;
 }
