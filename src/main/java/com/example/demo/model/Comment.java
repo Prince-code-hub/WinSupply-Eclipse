@@ -12,15 +12,15 @@ public class Comment {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "CommentID", nullable = false)
-  private Integer commentId;
+  Integer commentId;
 
   @JoinColumn(name = "ReviewID", nullable = false)
   @ManyToOne
-  private Review review;
+  Review review;
 
   @Column(name = "CommentText", length = 2500, nullable = false)
-  private String commentText;
+  String commentText;
 
   @Column(name = "DatePosted", nullable = false)
-  private LocalDateTime datePosted;
+  LocalDateTime datePosted;
 }
