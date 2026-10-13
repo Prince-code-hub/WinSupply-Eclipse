@@ -1,7 +1,9 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
+@Data
 @Entity
 @Table(name = "Genre")
 public class Genre {
@@ -11,6 +13,6 @@ public class Genre {
   @Column(name = "GenreID", nullable = false)
   private Short genreId;
 
-  @Column(name = "GenreName", nullable = false, unique = true, length = 50)
+  @Column(name = "GenreName", length = 50, nullable = false, unique = true)
   private String genreName;
 }
