@@ -3,7 +3,7 @@ package com.example.demo.service;
 import com.example.demo.model.Review;
 import com.example.demo.repository.ReviewRepository;
 import jakarta.persistence.EntityNotFoundException;
-import java.util.List;
+import java.util.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +24,10 @@ public class ReviewService {
   }
 
   public List<Review> searchReviews(String text) {
-    return reviewRepository.findByReviewTextContainingIgnoreCase(text);
+    Optional<List<Review>> result = reviewRepository.findByReviewTextContainingIgnoreCase(text);
+    if (result.isPresent() && result.get().isEmpty()) {
+      throw new EntityNotFoundException("Review(s) with text (" + text + ") not found");
+    }
+    return result.get();
   }
 }
