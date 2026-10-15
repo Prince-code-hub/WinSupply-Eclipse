@@ -1,0 +1,39 @@
+package com.example.demo.model;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import java.time.LocalDateTime;
+import lombok.Data;
+
+@Data
+@Entity
+@Table(name = "Review")
+public class Review {
+
+  @Id
+  @Column(name = "ReviewID", nullable = false, unique = true)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  Integer reviewId;
+
+  @JoinColumn(name = "BookID", nullable = false)
+  @ManyToOne
+  Book book;
+
+  @Column(name = "ReviewText", length = 3500, nullable = false)
+  String reviewText;
+
+  @Column(name = "Rating", nullable = false)
+  Byte rating;
+
+  @Column(name = "IsRecommended", nullable = false)
+  Boolean isRecommended;
+
+  @Column(name = "DatePosted", nullable = false)
+  LocalDateTime datePosted;
+}
