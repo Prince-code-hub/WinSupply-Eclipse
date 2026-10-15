@@ -46,7 +46,7 @@ spotless {
         forbidWildcardImports()
         cleanthat()
         palantirJavaFormat('2.74.0').style("GOOGLE")
-        formatAnnotations()
+		formatAnnotations()
     }
     json {
         target 'src/**/*.json'
