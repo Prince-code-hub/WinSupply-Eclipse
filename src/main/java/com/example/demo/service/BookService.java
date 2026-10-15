@@ -12,6 +12,10 @@ public class BookService {
 
   private final BookRepo bookRepo;
 
+  public BookService(BookRepo bookRepo) {
+    this.bookRepo = bookRepo;
+  }
+
   // gets all books
   public List<Book> getAllBooks() {
     return bookRepo.findAll();

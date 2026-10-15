@@ -4,7 +4,6 @@ import com.example.demo.dto.BookDto;
 import com.example.demo.mapper.BookMapper;
 import com.example.demo.service.BookService;
 import java.util.List;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -16,11 +15,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(path = "book", produces = MediaType.APPLICATION_JSON_VALUE)
-@RequiredArgsConstructor
 public class BookController {
 
   private final BookService bookService;
   private final BookMapper bookMapper;
+
+  public BookController(BookService bookService, BookMapper bookMapper) {
+    this.bookService = bookService;
+    this.bookMapper = bookMapper;
+  }
 
   // GET all books
   @GetMapping
