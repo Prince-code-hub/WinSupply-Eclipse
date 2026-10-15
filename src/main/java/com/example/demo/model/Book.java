@@ -30,7 +30,4 @@ public class Book {
 
   @Column(name = "PageCount")
   Short pageCount;
-
-  @Column(name = "DatePosted", nullable = false)
-  LocalDate datePosted;
 }
