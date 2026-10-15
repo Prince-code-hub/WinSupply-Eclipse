@@ -34,7 +34,7 @@ dependencies {
 }
 
 spotless {
-    format 'misc', {
+	format 'misc', {
         target '*.gradle', '.gitattributes', '.gitignore'
         trimTrailingWhitespace()
         leadingSpacesToTabs()
@@ -54,7 +54,7 @@ spotless {
             .feature('INDENT_OUTPUT', true)
             .feature('ORDER_MAP_ENTRIES_BY_KEYS', true)
     }
-    yaml {
+	yaml {
         target 'src/**/*.yaml'
         jackson()
             .feature('INDENT_OUTPUT', true)

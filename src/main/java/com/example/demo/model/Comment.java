@@ -19,9 +19,9 @@ import org.hibernate.annotations.SourceType;
 public class Comment {
 
   @Id
-  @Column(name = "CommentID", nullable = false)
+  @Column(name = "CommentID", nullable = false, unique = true)
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  Integer id;
+  Integer commentId;
 
   @JoinColumn(name = "ReviewID", nullable = false)
   @ManyToOne

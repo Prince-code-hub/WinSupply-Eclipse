@@ -8,10 +8,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import java.time.Instant;
+import java.time.LocalDateTime;
 import lombok.Data;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.SourceType;
 
 @Data
 @Entity
@@ -19,9 +17,9 @@ import org.hibernate.annotations.SourceType;
 public class Review {
 
   @Id
-  @Column(name = "ReviewID", nullable = false)
+  @Column(name = "ReviewID", nullable = false, unique = true)
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  Integer id;
+  Integer reviewId;
 
   @JoinColumn(name = "BookID", nullable = false)
   @ManyToOne
@@ -31,12 +29,11 @@ public class Review {
   String reviewText;
 
   @Column(name = "Rating", nullable = false)
-  Integer rating;
+  Byte rating;
 
   @Column(name = "IsRecommended", nullable = false)
   Boolean isRecommended;
 
   @Column(name = "DatePosted", nullable = false)
-  @CreationTimestamp(source = SourceType.DB)
-  Instant datePosted;
+  LocalDateTime datePosted;
 }

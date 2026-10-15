@@ -8,6 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import java.time.LocalDate;
 import lombok.Data;
 
 @Data
@@ -16,9 +17,9 @@ import lombok.Data;
 public class Book {
 
   @Id
-  @Column(name = "BookID", nullable = false)
+  @Column(name = "BookID", nullable = false, unique = true)
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  Integer id;
+  Integer bookId;
 
   @JoinColumn(name = "GenreID", nullable = false)
   @ManyToOne
@@ -28,5 +29,8 @@ public class Book {
   String title;
 
   @Column(name = "PageCount")
-  Integer pageCount;
+  Short pageCount;
+
+  @Column(name = "DatePosted", nullable = false)
+  LocalDate datePosted;
 }
