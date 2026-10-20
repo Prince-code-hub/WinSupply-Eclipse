@@ -6,6 +6,20 @@
             "name": "BookishApplication",
             "request": "launch",
             "mainClass": "com.example.demo.BookishApplication",
+            "projectName": "WinSupply-Eclipse"
+        },
+        {
+            "type": "java",
+            "name": "BookishApplication",
+            "request": "launch",
+            "mainClass": "com.example.demo.BookishApplication",
+            "projectName": "demo-WinSupply-Eclipse"
+        },
+        {
+            "type": "java",
+            "name": "BookishApplication",
+            "request": "launch",
+            "mainClass": "com.example.demo.BookishApplication",
             "projectName": "demo-bookish"
         },
         {
