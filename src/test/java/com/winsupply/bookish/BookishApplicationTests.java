@@ -1,10 +1,10 @@
-package com.example.demo;
+package com.winsupply.bookish;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ApiNameApplicationTests {
+class BookishApplicationTests {
 
   @Test
   void contextLoads() {}

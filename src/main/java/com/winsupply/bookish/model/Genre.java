@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.winsupply.bookish.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

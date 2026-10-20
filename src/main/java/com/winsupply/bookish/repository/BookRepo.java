@@ -1,6 +1,6 @@
-package com.example.demo.repository;
+package com.winsupply.bookish.repository;
 
-import com.example.demo.model.Book;
+import com.winsupply.bookish.model.Book;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,8 +1,8 @@
-package com.example.demo.controller;
+package com.winsupply.bookish.controller;
 
-import com.example.demo.dto.BookDto;
-import com.example.demo.mapper.BookMapper;
-import com.example.demo.service.BookService;
+import com.winsupply.bookish.dto.BookDto;
+import com.winsupply.bookish.mapper.BookMapper;
+import com.winsupply.bookish.service.BookService;
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

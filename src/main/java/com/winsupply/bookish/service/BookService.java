@@ -1,7 +1,7 @@
-package com.example.demo.service;
+package com.winsupply.bookish.service;
 
-import com.example.demo.model.Book;
-import com.example.demo.repository.BookRepo;
+import com.winsupply.bookish.model.Book;
+import com.winsupply.bookish.repository.BookRepo;
 import jakarta.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
