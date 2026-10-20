@@ -1,8 +1,8 @@
-package com.example.demo.controller;
+package com.winsupply.bookish.controller;
 
-import com.example.demo.dto.ReviewDTO;
-import com.example.demo.mapper.ReviewDtoMapper;
-import com.example.demo.service.ReviewService;
+import com.winsupply.bookish.dto.ReviewDTO;
+import com.winsupply.bookish.mapper.ReviewDtoMapper;
+import com.winsupply.bookish.service.ReviewService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

@@ -1,4 +1,4 @@
-package com.example.demo.dto;
+package com.winsupply.bookish.dto;
 
 import java.time.LocalDateTime;
 import lombok.Builder;
