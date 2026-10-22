@@ -43,4 +43,20 @@ public class GenresService {
 
     return genresMapper.toDtoList(result.get());
   }
+
+  public GenresDto createGenre(GenresDto genresDto) {
+    Genre genre = genresMapper.toEntity(genresDto);
+    Genre saved = genresRepo.save(genre);
+    return genresMapper.toDto(saved);
+  }
+
+  public GenresDto updateGenre(Short id, GenresDto genresDto) {
+    Genre genre = genresRepo
+        .findById(id)
+        .orElseThrow(() -> new EntityNotFoundException("Genre (" + id + ") not found"));
+
+    genre.setGenreName(genresDto.getGenreName());
+    Genre saved = genresRepo.save(genre);
+    return genresMapper.toDto(saved);
+  }
 }

@@ -17,4 +17,13 @@ public class GenresMapper {
   public List<GenresDto> toDtoList(List<Genre> genres) {
     return genres.stream().map(this::toDto).toList();
   }
+
+  public Genre toEntity(GenresDto genresDto) {
+    if (genresDto == null) {
+      return null;
+    }
+    Genre genre = new Genre();
+    genre.setGenreName(genresDto.getGenreName());
+    return genre;
+  }
 }

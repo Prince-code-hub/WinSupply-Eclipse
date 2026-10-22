@@ -4,7 +4,7 @@ import com.winsupply.bookish.dto.ReviewDTO;
 import com.winsupply.bookish.model.Review;
 import com.winsupply.bookish.service.ReviewService;
 import jakarta.persistence.EntityNotFoundException;
-import java.util.*;
+import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
