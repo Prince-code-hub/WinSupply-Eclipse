@@ -8,7 +8,7 @@ import lombok.Value;
 @Builder
 @Data
 @Value
-public class ReviewDTO {
+public class ReviewDto {
   Integer reviewId;
   Integer bookId;
   String reviewText;
