@@ -1,22 +1,25 @@
 package com.winsupply.bookish.mapper;
 
-import com.winsupply.bookish.dto.ReviewDTO;
+import com.winsupply.bookish.dto.ReviewDto;
 import com.winsupply.bookish.model.Review;
-import com.winsupply.bookish.service.ReviewService;
 import jakarta.persistence.EntityNotFoundException;
-import java.util.*;
+import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 
-@Mapper(
-    componentModel = "spring",
-    uses = {ReviewService.class})
+@Mapper(componentModel = "spring")
 public interface ReviewDtoMapper {
 
-  Review toEntity(ReviewDTO reviewDto) throws EntityNotFoundException;
+  @Mapping(target = "book.bookId", source = "bookId")
+  Review toEntity(ReviewDto reviewDto) throws EntityNotFoundException;
 
   @Mapping(target = "bookId", source = "book.bookId")
-  ReviewDTO toDto(Review review) throws EntityNotFoundException;
+  ReviewDto toDto(Review review) throws EntityNotFoundException;
 
-  List<ReviewDTO> toDtoList(List<Review> reviewList) throws EntityNotFoundException;
+  List<ReviewDto> toDtoList(List<Review> reviewList) throws EntityNotFoundException;
+
+  @Mapping(target = "reviewId", ignore = true)
+  @Mapping(target = "book", ignore = true)
+  Review updateEntity(ReviewDto reviewDto, @MappingTarget Review review);
 }

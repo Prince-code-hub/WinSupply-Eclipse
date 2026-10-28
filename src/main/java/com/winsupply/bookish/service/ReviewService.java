@@ -1,9 +1,12 @@
 package com.winsupply.bookish.service;
 
+import com.winsupply.bookish.dto.ReviewDto;
+import com.winsupply.bookish.mapper.ReviewDtoMapper;
 import com.winsupply.bookish.model.Review;
 import com.winsupply.bookish.repository.ReviewRepository;
 import jakarta.persistence.EntityNotFoundException;
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +15,11 @@ import org.springframework.stereotype.Service;
 public class ReviewService {
 
   private final ReviewRepository reviewRepository;
+  private final ReviewDtoMapper reviewDtoMapper;
+
+  public Review createReviewRequest(ReviewDto reviewDto) throws EntityNotFoundException {
+    return reviewRepository.saveAndFlush(reviewDtoMapper.toEntity(reviewDto));
+  }
 
   public List<Review> getAllReviews() {
     return reviewRepository.findAll();
@@ -29,5 +37,12 @@ public class ReviewService {
       throw new EntityNotFoundException("Review(s) with text (" + text + ") not found");
     }
     return result.get();
+  }
+
+  public Review putReview(Integer id, ReviewDto reviewDto) throws EntityNotFoundException {
+    Review review = reviewRepository
+        .findById(id)
+        .orElseThrow(() -> new EntityNotFoundException("Review (" + id + ") not found"));
+    return reviewRepository.saveAndFlush(reviewDtoMapper.updateEntity(reviewDto, review));
   }
 }
