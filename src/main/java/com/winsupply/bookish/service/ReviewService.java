@@ -1,11 +1,12 @@
 package com.winsupply.bookish.service;
 
+import com.winsupply.bookish.dto.CreateBookReviewDTO;
 import com.winsupply.bookish.dto.ReviewDTO;
-import com.winsupply.bookish.mapper.ReviewDtoMapper;
-import com.winsupply.bookish.model.Book;
-import com.winsupply.bookish.model.Review;
-import com.winsupply.bookish.repository.ReviewRepository;
+import com.winsupply.bookish.mapper.*;
+import com.winsupply.bookish.model.*;
+import com.winsupply.bookish.repository.*;
 import jakarta.persistence.EntityNotFoundException;
+import java.time.LocalDateTime;
 import java.util.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,8 @@ public class ReviewService {
 
   private final ReviewRepository reviewRepository;
   private final BookService bookService;
+  private final CreateBookReviewMapper createBookReviewMapper;
+  private final BookRepo bookRepo;
   private final ReviewDtoMapper reviewDtoMapper;
 
   public List<Review> getAllReviews() {
@@ -37,15 +40,22 @@ public class ReviewService {
   }
 
   public Review createReview(ReviewDTO reviewDTO) throws EntityNotFoundException {
-    return reviewRepository.saveAndFlush(
-    reviewDtoMapper.toEntity(reviewDTO));
+    return reviewRepository.saveAndFlush(reviewDtoMapper.toEntity(reviewDTO));
   }
-  public Review updateReview(Integer id, ReviewDTO reviewDTO)
-      throws EntityNotFoundException {
+
+  public Review createBookReview(CreateBookReviewDTO dto) throws EntityNotFoundException {
+    Review review = createBookReviewMapper.toEntity(dto, dto.getBook().getGenre());
+
+    review.setDatePosted(LocalDateTime.now());
+
+    bookRepo.saveAndFlush(review.getBook());
+    return reviewRepository.saveAndFlush(review);
+  }
+
+  public Review updateReview(Integer id, ReviewDTO reviewDTO) throws EntityNotFoundException {
     Review review = reviewRepository
         .findById(id)
         .orElseThrow(() -> new EntityNotFoundException("Review (" + id + ") not found"));
-    return reviewRepository.saveAndFlush(
-        reviewDtoMapper.updateEntity(reviewDTO, review));
+    return reviewRepository.saveAndFlush(reviewDtoMapper.updateEntity(reviewDTO, review));
   }
 }

@@ -4,9 +4,8 @@ import com.winsupply.bookish.dto.ReviewDTO;
 import com.winsupply.bookish.mapper.ReviewDtoMapper;
 import com.winsupply.bookish.model.Review;
 import com.winsupply.bookish.service.ReviewService;
-
+import com.winsupply.bookish.dto.CreateBookReviewDTO;
 import jakarta.persistence.EntityNotFoundException;
-
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -52,7 +51,17 @@ public class ReviewController {
   ResponseEntity<Object> createReview(@RequestBody ReviewDTO reviewDTO) {
     try {
       Review review = reviewService.createReview(reviewDTO);
-      return new ResponseEntity<>(reviewDtoMapper.toDto(review), HttpStatus.OK);
+      return new ResponseEntity<>(reviewDtoMapper.toDto(review), HttpStatus.CREATED);
+    } catch (EntityNotFoundException e) {
+      return new ResponseEntity<>(e.getLocalizedMessage(), HttpStatus.BAD_REQUEST);
+    }
+  }
+
+  @PostMapping(path = "/with-book",consumes = MediaType.APPLICATION_JSON_VALUE)
+  ResponseEntity<Object> createBookReview(@RequestBody CreateBookReviewDTO dto) {
+    try {
+      Review review = reviewService.createBookReview(dto);
+      return new ResponseEntity<>(reviewDtoMapper.toDto(review), HttpStatus.CREATED);
     } catch (EntityNotFoundException e) {
       return new ResponseEntity<>(e.getLocalizedMessage(), HttpStatus.BAD_REQUEST);
     }

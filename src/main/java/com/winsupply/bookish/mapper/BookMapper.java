@@ -1,7 +1,7 @@
 package com.winsupply.bookish.mapper;
 
 import com.winsupply.bookish.dto.BookDto;
-import com.winsupply.bookish.model.Book;
+import com.winsupply.bookish.model.*;
 import jakarta.persistence.EntityNotFoundException;
 import java.util.*;
 import org.mapstruct.Mapper;
