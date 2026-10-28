@@ -1,6 +1,6 @@
 package com.winsupply.bookish.dto;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import lombok.Data;
 
 @Data
@@ -10,5 +10,5 @@ public class BookDto {
   String title;
   Integer genreId;
   Short pageCount;
-  LocalDate datePosted;
+  LocalDateTime datePosted;
 }
