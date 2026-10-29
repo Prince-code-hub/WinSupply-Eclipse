@@ -5,6 +5,13 @@
             "type": "java",
             "name": "BookishApplication",
             "request": "launch",
+            "mainClass": "com.winsupply.bookish.BookishApplication",
+            "projectName": "bookish"
+        },
+        {
+            "type": "java",
+            "name": "BookishApplication",
+            "request": "launch",
             "mainClass": "com.example.demo.BookishApplication",
             "projectName": "WinSupply-Eclipse"
         },

@@ -1,9 +1,10 @@
-package com.example.demo.service;
+package com.winsupply.bookish.service;
 
-import com.example.demo.model.Review;
-import com.example.demo.repository.ReviewRepository;
+import com.winsupply.bookish.model.Review;
+import com.winsupply.bookish.repository.ReviewRepository;
 import jakarta.persistence.EntityNotFoundException;
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
