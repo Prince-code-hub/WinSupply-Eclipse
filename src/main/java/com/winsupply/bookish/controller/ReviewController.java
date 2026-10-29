@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -67,5 +68,12 @@ public class ReviewController {
   ResponseEntity<List<ReviewDto>> searchReviews(@RequestParam("text") String text) {
     return new ResponseEntity<>(
         reviewDtoMapper.toDtoList(reviewService.searchReviews(text)), HttpStatus.OK);
+  }
+
+  // delete review by ID
+  @DeleteMapping(path = "{id}")
+  ResponseEntity<Void> deleteReview(@PathVariable Integer id) {
+    reviewService.deleteReview(id);
+    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
   }
 }
