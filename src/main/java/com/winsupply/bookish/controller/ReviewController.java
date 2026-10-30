@@ -1,10 +1,10 @@
 package com.winsupply.bookish.controller;
 
+import com.winsupply.bookish.dto.CreateBookReviewDTO;
 import com.winsupply.bookish.dto.ReviewDTO;
 import com.winsupply.bookish.mapper.ReviewDtoMapper;
 import com.winsupply.bookish.model.Review;
 import com.winsupply.bookish.service.ReviewService;
-import com.winsupply.bookish.dto.CreateBookReviewDTO;
 import jakarta.persistence.EntityNotFoundException;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -57,7 +57,7 @@ public class ReviewController {
     }
   }
 
-  @PostMapping(path = "/with-book",consumes = MediaType.APPLICATION_JSON_VALUE)
+  @PostMapping(path = "/with-book", consumes = MediaType.APPLICATION_JSON_VALUE)
   ResponseEntity<Object> createBookReview(@RequestBody CreateBookReviewDTO dto) {
     try {
       Review review = reviewService.createBookReview(dto);
