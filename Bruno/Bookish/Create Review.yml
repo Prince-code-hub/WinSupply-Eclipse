@@ -1,0 +1,26 @@
+info:
+  name: Create Review
+  type: http
+  seq: 14
+
+http:
+  method: POST
+  url: http://localhost:8080/bookish/review
+  body:
+    type: json
+    data: |-
+      {
+          "bookId": 1,
+        "reviewText": "This is a really interesting book. I enjoyed the story and the characters.",
+        "rating": 5,
+        "isRecommended": true,
+        "datePosted": "2026-10-30T13:30:00"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

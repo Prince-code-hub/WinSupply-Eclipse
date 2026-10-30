@@ -1,0 +1,16 @@
+info:
+  name: Delete REview
+  type: http
+  seq: 13
+
+http:
+  method: DELETE
+  url: http://localhost:8080/bookish/review/7
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

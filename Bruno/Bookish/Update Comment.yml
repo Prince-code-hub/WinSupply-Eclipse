@@ -1,0 +1,22 @@
+info:
+  name: Update Comment
+  type: http
+  seq: 16
+
+http:
+  method: PUT
+  url: http://localhost:8080/bookish/comment/7
+  body:
+    type: json
+    data: |-
+      {
+        "commentText" : "This is my updated comment"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
