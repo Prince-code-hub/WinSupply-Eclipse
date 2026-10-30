@@ -61,3 +61,5 @@ Ensure that you are using the expected launch configuration in Visual Studio Cod
 
 1. Open Bruno and click "Open Collection"
 2. Select the folder: `/bookish/Bruno/Bookish`
+3. Open a request and ensure your environment is set to "Local" (this sets your `BASE_URL` variable)
+4. Send a request by clicking the arrow
