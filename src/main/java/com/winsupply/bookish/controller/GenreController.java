@@ -1,7 +1,7 @@
-package com.example.demo.controller;
+package com.winsupply.bookish.controller;
 
-import com.example.demo.dto.GenreDto;
-import com.example.demo.service.GenreService;
+import com.winsupply.bookish.dto.GenreDto;
+import com.winsupply.bookish.service.GenreService;
 import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

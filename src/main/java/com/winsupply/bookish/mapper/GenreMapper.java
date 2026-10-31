@@ -1,7 +1,7 @@
-package com.example.demo.mapper;
+package com.winsupply.bookish.mapper;
 
-import com.example.demo.dto.GenreDto;
-import com.example.demo.model.Genre;
+import com.winsupply.bookish.dto.GenreDto;
+import com.winsupply.bookish.model.Genre;
 import java.util.List;
 import org.springframework.stereotype.Component;
 

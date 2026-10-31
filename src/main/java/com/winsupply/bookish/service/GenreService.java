@@ -1,9 +1,9 @@
-package com.example.demo.service;
+package com.winsupply.bookish.service;
 
-import com.example.demo.dto.GenreDto;
-import com.example.demo.mapper.GenreMapper;
-import com.example.demo.model.Genre;
-import com.example.demo.repository.GenreRepo;
+import com.winsupply.bookish.dto.GenreDto;
+import com.winsupply.bookish.mapper.GenreMapper;
+import com.winsupply.bookish.model.Genre;
+import com.winsupply.bookish.repository.GenreRepo;
 import jakarta.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
