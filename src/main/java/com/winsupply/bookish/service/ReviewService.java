@@ -6,6 +6,7 @@ import com.winsupply.bookish.model.Review;
 import com.winsupply.bookish.repository.CommentRepo;
 import com.winsupply.bookish.repository.ReviewRepository;
 import jakarta.persistence.EntityNotFoundException;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +22,9 @@ public class ReviewService {
   private final CommentRepo commentRepo;
 
   public Review createReviewRequest(ReviewDto reviewDto) throws EntityNotFoundException {
-    return reviewRepository.saveAndFlush(reviewDtoMapper.toEntity(reviewDto));
+    Review review = reviewDtoMapper.toEntity(reviewDto);
+    review.setDatePosted(LocalDateTime.now());
+    return reviewRepository.saveAndFlush(review);
   }
 
   public List<Review> getAllReviews() {
@@ -59,5 +62,17 @@ public class ReviewService {
     commentRepo.deleteAll(commentRepo.findByReview_ReviewId(id));
 
     reviewRepository.delete(review);
+  }
+
+  // gets review by book title
+  public List<Review> getReviewsByBookTitle(String title) {
+
+    List<Review> result = reviewRepository.findByBook_Title(title);
+
+    if (result.isEmpty()) {
+      throw new EntityNotFoundException("Review(s) with booktitle (" + title + ") not found");
+    }
+
+    return result;
   }
 }

@@ -8,6 +8,7 @@ public class BookDto {
 
   Integer bookId;
   String title;
+  String author;
   Integer genreId;
   Short pageCount;
   LocalDateTime datePosted;

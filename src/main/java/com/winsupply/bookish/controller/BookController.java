@@ -2,6 +2,7 @@ package com.winsupply.bookish.controller;
 
 import com.winsupply.bookish.dto.BookDto;
 import com.winsupply.bookish.mapper.BookMapper;
+import com.winsupply.bookish.model.Book;
 import com.winsupply.bookish.service.BookService;
 import java.util.List;
 import org.springframework.http.HttpStatus;
@@ -9,6 +10,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,5 +45,16 @@ public class BookController {
   ResponseEntity<List<BookDto>> getBooksByTitle(@RequestParam String title) {
     return new ResponseEntity<>(
         bookMapper.toDtoList(bookService.getBooksByTitle(title)), HttpStatus.OK);
+  }
+
+  // POST create a new book
+  @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+  ResponseEntity<BookDto> createBook(@RequestBody BookDto bookDto) {
+
+    Book book = bookMapper.toEntity(bookDto);
+
+    Book savedBook = bookService.createBook(book, bookDto.getGenreId());
+
+    return new ResponseEntity<>(bookMapper.toDto(savedBook), HttpStatus.CREATED);
   }
 }

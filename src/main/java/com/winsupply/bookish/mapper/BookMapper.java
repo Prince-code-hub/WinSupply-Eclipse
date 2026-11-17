@@ -14,4 +14,8 @@ public interface BookMapper {
   BookDto toDto(Book book) throws EntityNotFoundException;
 
   List<BookDto> toDtoList(List<Book> bookList) throws EntityNotFoundException;
+
+  // converts BookDto into Book for creating new books
+  @Mapping(target = "genre", ignore = true)
+  Book toEntity(BookDto bookDto);
 }

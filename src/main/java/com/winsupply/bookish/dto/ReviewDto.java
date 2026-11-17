@@ -9,8 +9,10 @@ import lombok.Value;
 @Data
 @Value
 public class ReviewDto {
+
   Integer reviewId;
   Integer bookId;
+  String bookTitle;
   String reviewText;
   Byte rating;
   Boolean isRecommended;
