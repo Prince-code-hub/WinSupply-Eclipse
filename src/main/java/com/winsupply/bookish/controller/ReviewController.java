@@ -43,7 +43,7 @@ public class ReviewController {
     } catch (EntityNotFoundException e) {
       return new ResponseEntity<>(e.getLocalizedMessage(), HttpStatus.BAD_REQUEST);
     }
-    return new ResponseEntity<>(review, HttpStatus.OK);
+    return new ResponseEntity<>(reviewDtoMapper.toDto(review), HttpStatus.OK);
   }
 
   @PutMapping(path = "{id}")
@@ -55,7 +55,7 @@ public class ReviewController {
     } catch (EntityNotFoundException e) {
       return new ResponseEntity<>(e.getLocalizedMessage(), HttpStatus.BAD_REQUEST);
     }
-    return new ResponseEntity<>(review, HttpStatus.OK);
+    return new ResponseEntity<>(reviewDtoMapper.toDto(review), HttpStatus.OK);
   }
 
   @GetMapping(path = "{id}")
@@ -64,6 +64,14 @@ public class ReviewController {
         reviewDtoMapper.toDto(reviewService.getReviewById(id)), HttpStatus.OK);
   }
 
+  // GET reviews by book title
+  @GetMapping(path = "search/book-title")
+  ResponseEntity<List<ReviewDto>> getReviewsByBookTitle(@RequestParam String title) {
+    return new ResponseEntity<>(
+        reviewDtoMapper.toDtoList(reviewService.getReviewsByBookTitle(title)), HttpStatus.OK);
+  }
+
+  // GET reviews by review text
   @GetMapping(path = "search")
   ResponseEntity<List<ReviewDto>> searchReviews(@RequestParam("text") String text) {
     return new ResponseEntity<>(

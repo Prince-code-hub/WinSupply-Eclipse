@@ -26,6 +26,9 @@ public class Book {
   @Column(name = "Title", length = 50, nullable = false)
   String title;
 
+  @Column(name = "Author", length = 50, nullable = false)
+  String author;
+
   @Column(name = "PageCount")
   Short pageCount;
 }

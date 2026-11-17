@@ -15,11 +15,13 @@ public interface ReviewDtoMapper {
   Review toEntity(ReviewDto reviewDto) throws EntityNotFoundException;
 
   @Mapping(target = "bookId", source = "book.bookId")
+  @Mapping(target = "bookTitle", source = "book.title")
   ReviewDto toDto(Review review) throws EntityNotFoundException;
 
   List<ReviewDto> toDtoList(List<Review> reviewList) throws EntityNotFoundException;
 
   @Mapping(target = "reviewId", ignore = true)
   @Mapping(target = "book", ignore = true)
+  @Mapping(target = "datePosted", ignore = true)
   Review updateEntity(ReviewDto reviewDto, @MappingTarget Review review);
 }

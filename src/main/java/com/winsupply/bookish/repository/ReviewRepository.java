@@ -9,4 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ReviewRepository extends JpaRepository<Review, Integer> {
   Optional<List<Review>> findByReviewTextContainingIgnoreCase(String text);
+
+  List<Review> findByBook_Title(String title);
 }
